@@ -1,0 +1,19 @@
+{
+  "name": "template-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "curl https://raw.githubusercontent.com/HuynhThiMinhNhuc/MovieTicketsBookingApp/main/WebServer/code/Documents/README.md?token=GHSAT0AAAAAABQ6MZ5FX6B4NMRB3OQOYKNMYRJISNA -o index.md  & npx reslate build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.21",
+    "reslate": "^3.0.0-5",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.2"
+  }
+}
