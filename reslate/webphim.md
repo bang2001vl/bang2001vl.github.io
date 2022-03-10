@@ -1,8 +1,13 @@
 ---
 title: WebPhim API v1.0
 language_tabs:
-  - shell: curl
-  - javascript: JavaScript
+  - javascript
+  - shell
+  - http
+  - python
+  - ruby
+  - java
+  - go
 toc_footers: []
 includes: []
 search: true
@@ -21,7 +26,7 @@ This is an simple api-server for a movie website
 
 Base URLs:
 
-* <a href="https://thunderv-2.southeastasia.cloudapp.azure.com:5000">https://thunderv-2.southeastasia.cloudapp.azure.com:5000</a>
+* <a href="http://thunderv-2.southeastasia.cloudapp.azure.com:5000">http://thunderv-2.southeastasia.cloudapp.azure.com:5000</a>
 
 Email: <a href="mailto:bang2001vl@outlook.com.vn">Support</a> 
 License: <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a>
@@ -34,14 +39,6 @@ All thing about auth
 
 > Code samples
 
-```shell
-# You can also use wget
-curl -X POST https://thunderv-2.southeastasia.cloudapp.azure.com:5000/auth/destroysession \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: application/json'
-
-```
-
 ```javascript
 const inputBody = '{
   "token": "string"
@@ -51,7 +48,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('https://thunderv-2.southeastasia.cloudapp.azure.com:5000/auth/destroysession',
+fetch('http://thunderv-2.southeastasia.cloudapp.azure.com:5000/auth/destroysession',
 {
   method: 'POST',
   body: inputBody,
@@ -62,6 +59,95 @@ fetch('https://thunderv-2.southeastasia.cloudapp.azure.com:5000/auth/destroysess
 }).then(function(body) {
     console.log(body);
 });
+
+```
+
+```shell
+# You can also use wget
+curl -X POST http://thunderv-2.southeastasia.cloudapp.azure.com:5000/auth/destroysession \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json'
+
+```
+
+```http
+POST http://thunderv-2.southeastasia.cloudapp.azure.com:5000/auth/destroysession HTTP/1.1
+Host: thunderv-2.southeastasia.cloudapp.azure.com:5000
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('http://thunderv-2.southeastasia.cloudapp.azure.com:5000/auth/destroysession', headers = headers)
+
+print(r.json())
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+}
+
+result = RestClient.post 'http://thunderv-2.southeastasia.cloudapp.azure.com:5000/auth/destroysession',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```java
+URL obj = new URL("http://thunderv-2.southeastasia.cloudapp.azure.com:5000/auth/destroysession");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "http://thunderv-2.southeastasia.cloudapp.azure.com:5000/auth/destroysession", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
 
 ```
 
@@ -133,14 +219,6 @@ All thing about login
 
 > Code samples
 
-```shell
-# You can also use wget
-curl -X POST https://thunderv-2.southeastasia.cloudapp.azure.com:5000/login \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: application/json'
-
-```
-
 ```javascript
 const inputBody = '{
   "account": {
@@ -154,7 +232,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('https://thunderv-2.southeastasia.cloudapp.azure.com:5000/login',
+fetch('http://thunderv-2.southeastasia.cloudapp.azure.com:5000/login',
 {
   method: 'POST',
   body: inputBody,
@@ -165,6 +243,95 @@ fetch('https://thunderv-2.southeastasia.cloudapp.azure.com:5000/login',
 }).then(function(body) {
     console.log(body);
 });
+
+```
+
+```shell
+# You can also use wget
+curl -X POST http://thunderv-2.southeastasia.cloudapp.azure.com:5000/login \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json'
+
+```
+
+```http
+POST http://thunderv-2.southeastasia.cloudapp.azure.com:5000/login HTTP/1.1
+Host: thunderv-2.southeastasia.cloudapp.azure.com:5000
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('http://thunderv-2.southeastasia.cloudapp.azure.com:5000/login', headers = headers)
+
+print(r.json())
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+}
+
+result = RestClient.post 'http://thunderv-2.southeastasia.cloudapp.azure.com:5000/login',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```java
+URL obj = new URL("http://thunderv-2.southeastasia.cloudapp.azure.com:5000/login");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "http://thunderv-2.southeastasia.cloudapp.azure.com:5000/login", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
 
 ```
 
@@ -246,20 +413,13 @@ All thing about movie
 
 > Code samples
 
-```shell
-# You can also use wget
-curl -X GET https://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/list \
-  -H 'Accept: application/json'
-
-```
-
 ```javascript
 
 const headers = {
   'Accept':'application/json'
 };
 
-fetch('https://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/list',
+fetch('http://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/list',
 {
   method: 'GET',
 
@@ -270,6 +430,90 @@ fetch('https://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/list',
 }).then(function(body) {
     console.log(body);
 });
+
+```
+
+```shell
+# You can also use wget
+curl -X GET http://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/list \
+  -H 'Accept: application/json'
+
+```
+
+```http
+GET http://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/list HTTP/1.1
+Host: thunderv-2.southeastasia.cloudapp.azure.com:5000
+Accept: application/json
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.get('http://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/list', headers = headers)
+
+print(r.json())
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'http://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/list',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```java
+URL obj = new URL("http://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/list");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "http://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/list", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
 
 ```
 
@@ -339,14 +583,6 @@ This operation does not require authentication
 
 > Code samples
 
-```shell
-# You can also use wget
-curl -X GET https://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/overview \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: application/json'
-
-```
-
 ```javascript
 const inputBody = '{
   "movieID": 1
@@ -356,7 +592,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('https://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/overview',
+fetch('http://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/overview',
 {
   method: 'GET',
   body: inputBody,
@@ -367,6 +603,95 @@ fetch('https://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/overview',
 }).then(function(body) {
     console.log(body);
 });
+
+```
+
+```shell
+# You can also use wget
+curl -X GET http://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/overview \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json'
+
+```
+
+```http
+GET http://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/overview HTTP/1.1
+Host: thunderv-2.southeastasia.cloudapp.azure.com:5000
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.get('http://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/overview', headers = headers)
+
+print(r.json())
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+}
+
+result = RestClient.get 'http://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/overview',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```java
+URL obj = new URL("http://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/overview");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "http://thunderv-2.southeastasia.cloudapp.azure.com:5000/movie/overview", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
 
 ```
 
@@ -483,14 +808,6 @@ All thing about signup
 
 > Code samples
 
-```shell
-# You can also use wget
-curl -X POST https://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: application/json'
-
-```
-
 ```javascript
 const inputBody = '{
   "account": {
@@ -509,7 +826,7 @@ const headers = {
   'Accept':'application/json'
 };
 
-fetch('https://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup',
+fetch('http://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup',
 {
   method: 'POST',
   body: inputBody,
@@ -520,6 +837,95 @@ fetch('https://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup',
 }).then(function(body) {
     console.log(body);
 });
+
+```
+
+```shell
+# You can also use wget
+curl -X POST http://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json'
+
+```
+
+```http
+POST http://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup HTTP/1.1
+Host: thunderv-2.southeastasia.cloudapp.azure.com:5000
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+r = requests.post('http://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup', headers = headers)
+
+print(r.json())
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json'
+}
+
+result = RestClient.post 'http://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```java
+URL obj = new URL("http://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "http://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
 
 ```
 
@@ -603,20 +1009,13 @@ This operation does not require authentication
 
 > Code samples
 
-```shell
-# You can also use wget
-curl -X POST https://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup/confirm \
-  -H 'Accept: application/json'
-
-```
-
 ```javascript
 
 const headers = {
   'Accept':'application/json'
 };
 
-fetch('https://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup/confirm',
+fetch('http://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup/confirm',
 {
   method: 'POST',
 
@@ -627,6 +1026,90 @@ fetch('https://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup/confirm',
 }).then(function(body) {
     console.log(body);
 });
+
+```
+
+```shell
+# You can also use wget
+curl -X POST http://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup/confirm \
+  -H 'Accept: application/json'
+
+```
+
+```http
+POST http://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup/confirm HTTP/1.1
+Host: thunderv-2.southeastasia.cloudapp.azure.com:5000
+Accept: application/json
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json'
+}
+
+r = requests.post('http://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup/confirm', headers = headers)
+
+print(r.json())
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json'
+}
+
+result = RestClient.post 'http://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup/confirm',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```java
+URL obj = new URL("http://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup/confirm");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "http://thunderv-2.southeastasia.cloudapp.azure.com:5000/signup/confirm", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
 
 ```
 
