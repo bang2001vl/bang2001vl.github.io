@@ -1,1 +1,5 @@
-console.log("hello-world-2");
+import { rename } from "fs";
+
+rename("./_site", "./site", ()=>{
+    console.log("Build successfull");
+});

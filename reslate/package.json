@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "curl https://raw.githubusercontent.com/HuynhThiMinhNhuc/MovieTicketsBookingApp/main/WebServer/code/Documents/README.md?token=GHSAT0AAAAAABQ6MZ5FX6B4NMRB3OQOYKNMYRJISNA -o index.md  & npx reslate build",
+    "get-content": "curl https://raw.githubusercontent.com/HuynhThiMinhNhuc/MovieTicketsBookingApp/main/WebServer/code/Documents/README.md -o index.md  ",
+    "build": "npx reslate build & npx ts-node-dev index.ts",
+    "start": "npm run get-content & npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
