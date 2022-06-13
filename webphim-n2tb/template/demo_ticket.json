@@ -1,0 +1,79 @@
+{
+    "theater": "My Cinestar",
+    "theaterName": "Rạp CINESTAR Bình Dương",
+    "movieAddress": "Nhà văn hoá Sinh viên ĐHQG, Đông hoà, Dĩ an, Bình dương",
+
+    "id": 15,
+    "userInfoId": 1,
+    "showId": 74,
+    "status": 0,
+    "movieName": "Avenger: Endgame",
+    "buyerName": "vũ ngọc thạch",
+    "quantity": 2,
+    "total": 135000,
+    "createdAt": "2022-06-01T03:56:30.000Z",
+    "updatedAt": "2022-06-01T03:56:30.000Z",
+    "userInfo": {
+        "id": 1,
+        "fullname": "Admin"
+    },
+    "movieShows": {
+        "id": 74,
+        "movieId": 3,
+        "theatreId": 1,
+        "roomId": 1,
+        "dateTimeStart": "2022-06-05T18:30:00.000Z",
+        "dateTimeEnd": "2022-06-05T21:30:00.000Z",
+        "createdAt": "2022-05-30T02:21:25.000Z",
+        "updatedAt": "2022-05-30T02:21:25.000Z",
+        "movie": {
+            "title": "Avenger: Endgame"
+        }
+    },
+    "seats": [
+        {
+            "id": 18,
+            "ticketId": 10,
+            "seat": "B6",
+            "price": 20000
+        },
+        {
+            "id": 19,
+            "ticketId": 10,
+            "seat": "C6",
+            "price": 20000
+        }
+    ],
+    "foods": [
+        {
+            "id": 12,
+            "ticketId": 10,
+            "foodId": 18,
+            "quantity": 1,
+            "totalMoney": 95000,
+            "food": {
+                "id": 18,
+                "name": "Combo Lễ Nguyên Đán",
+                "price": 95000,
+                "description": "Gồm 1 coca nhỏ và 1 bắp lớn",
+                "status": 0,
+                "imageURI": "uploads/food/c4a541a0-dca2-11ec-9f8f-69d03ef0d0d8.png",
+                "createdAt": "2022-05-26T03:20:19.000Z",
+                "updatedAt": "2022-05-26T03:20:19.000Z"
+            }
+        }
+    ],
+    "payment": {
+        "id": 10,
+        "ticketId": 10,
+        "voucherId": null,
+        "method": "creditcard",
+        "infoData": "{\"fullname\":\"vũ ngọc thạch\",\"phone\":\"0382259845\",\"email\":\"vungocthach1112@gmail.com\",\"args\":{\"bank\":\"sacombank\"}}",
+        "total": 135000,
+        "discount": 0,
+        "privateCode": "This code be provided by other app",
+        "createdAt": "2022-06-01T03:56:30.000Z",
+        "updatedAt": "2022-06-01T03:56:30.000Z",
+        "voucher": null
+    }
+}

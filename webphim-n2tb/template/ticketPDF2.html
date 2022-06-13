@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="vi">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>HOÁ ĐƠN</title>
+   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+   <script type="text/javascript">
+      $(document).ready(function () {
+         // Function to HTML encode the text
+         // This creates a new hidden element,
+         // inserts the given text into it 
+
+         $.htmlQR = function (qrCode) {
+            // and outputs it out as HTML
+            let finalURL =
+               'https://chart.googleapis.com/chart?cht=qr&chl=' +
+               $('<div/>').text(qrCode)
+                  .html() +
+               '&chs=160x160&chld=L|0'
+
+            // Replace the src of the image with
+            // the QR code image
+            $('.qr-code').attr('src', finalURL);
+         }
+
+         $.getHoursAndMinutes = function (time) {
+            date = new Date(time);
+            return date.getHours() + 'h' + date.getMinutes();
+         }
+
+         $.buildTable = function (rows, total) {
+            let myTr = '';
+            rows.forEach((data, index) => {
+               myTr += '<tr>';
+               myTr += `<td style="text-align:center;padding:8px;border:1px solid #ccc">${index + 1}</td>`;
+               myTr += `<td style="text-align:center;padding:8px;border:1px solid #ccc">${data.name}</td>`;
+               myTr += `<td style="text-align:center;padding:8px;border:1px solid #ccc">${data.quantity}</td>`;
+               myTr += `<td style="text-align:center;padding:8px;border:1px solid #ccc">${data.price}</td>`;
+               myTr += `<td style="text-align:center;padding:8px;border:1px solid #ccc">${data.total}</td>`;
+               myTr += '</tr>';
+            });
+            let result =
+               `<tbody>
+                  <tr style="padding:8px;background-color:#feae00c4">
+                     <td style="text-align:center;color:#000;padding:8px; font-weight: 600;">STT</td>
+                     <td style="text-align:center;color:#000;padding:8px;font-weight: 600; ">MẶT HÀNG</td>
+                     <td style="text-align:center;color:#000;padding:8px;font-weight: 600;">SỐ LƯỢNG</td>
+                     <td style="text-align:center;color:#000;padding:8px;font-weight: 600;">ĐƠN GIÁ</td>
+                     <td style="text-align:center;color:#000;padding:8px;font-weight: 600;">THÀNH TIỀN (VNĐ)</td>
+                  </tr>
+                  ${myTr}
+                  <tr>
+                     <td colspan="4" style="text-align:left;padding:8px;color:#FEAE00; font-weight: bold;">TỔNG
+                        TIỀN (VNĐ)</td>
+                     <td style="text-align:right;color:#FEAE00;padding:8px;  font-weight: bold;">${total}</td>
+                  </tr>
+               </tbody>`;
+            return result;
+         };
+
+         // Build UI
+         $.getJSON('demo_ticket.json',
+            function (data) {
+               var ticketData = '';
+               console.log(data);
+
+               // build qr code
+               $.htmlQR(data.id);
+
+
+               // create table
+               let tableRows = [];
+               seatRows = {
+                  name: `GHẾ ĐƠN ${data.seats.map(i => i.seat).join(', ')}`,
+                  quantity: data.seats.length,
+                  price: data.seats[0].price,
+                  total: data.seats.length * data.seats[0].price,
+               };
+
+               //Add seat to table
+               tableRows.push(seatRows);
+
+               // Add food to table
+               tableRows.push(...data.foods.map(food => {
+                  return {
+                     name: food.food.name,
+                     quantity: food.quantity,
+                     price: food.totalMoney / food.quantity,
+                     total: food.totalMoney,
+                  }
+               }));
+
+               // set table
+               let table = $.buildTable(tableRows, data.total);
+               $('#myTable').html(table);
+
+
+               // Set time show
+               let startTime = $.getHoursAndMinutes(data.movieShows.dateTimeStart);
+               let timeEnd = $.getHoursAndMinutes(data.movieShows.dateTimeEnd);
+               let date = new Date(data.movieShows.dateTimeStart);
+               let dateString = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
+               $('#showTime').html(`: ${startTime} - ${timeEnd}, ${dateString}`);
+               
+               $('#movieTheaterName1').html(data.theaterName ?? 'tên rạp không xác định');
+               $('#movieTheaterName2').html(`: ${data.theaterName ?? 'tên rạp không xác định'}`);
+               $('.movieTheater').html(`${data.theater ?? 'CINESTAR_UIT'}`);
+               $('#movieAddress').html(data.movieAddress ?? 'địa chỉ rạp không xác định');
+               
+               $('#code').html(`: ${data.id}`);
+               $('#room').html(`: ${data.movieShows.roomId}`);
+               $('#movieName').html(`: ${data.movieShows.movie.title}`);
+               $('#seatName').html(`: ${data.seats.map(i => i.seat).join(', ')}`);
+            })
+      })
+   </script>
+</head>
+
+<body
+   style="background-color: rgba(255, 255, 255, 0.801); margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+   <div class="">
+      <div class="aHl"></div>
+      <div id=":101" tabindex="-1"></div>
+      <div id=":zq" class="ii gt" jslog="20277; u014N:xr6bB; 4:W251bGwsbnVsbCxbXV0.">
+         <div id=":zp" class="a3s aiL "><u></u>
+            <div style="font-size:13px">
+               <div style="margin:0 auto;border:2px solid #fff;width: 600px;;padding:10px">
+                  <table style="width:100%">
+                     <tbody>
+                        <tr>
+                           <td>
+                              <table style="width:100%">
+                                 <tbody>
+                                    <tr>
+                                       <td colspan="2">
+                                          <h2 class="movieTheater">CINESTAR</h2>
+                                          <p class="movieTheaterName" id="movieTheaterName1">Universecine Thủ Đức<br>
+                                          </p>
+                                          <p id="movieAddress">Tầng 4, Vincom Thủ Đức, Thành phố Thủ Đức, TPHCM</p>
+                                          <p style="color:FEAE00;font-size:20px; font-weight: bold; color: #FEAE00;">XÁC
+                                             NHẬN ĐẶT VÉ THÀNH CÔNG</p>
+                                    <tr>
+                                       <td style="padding:4px; font-weight: 600;">MÃ ĐẶT VÉ:</td>
+                                       <td style="padding:4px" id="code">143149075</td>
+                                    </tr>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td style="padding:4px; font-weight: 600">PHIM</td>
+                           <td style="padding:4px;width:70%" id="movieName">: BO GIA C13</td>
+                        </tr>
+                        <tr>
+                           <td style="padding:4px; font-weight: 600">SUẤT CHIẾU</td>
+                           <td style="padding:4px" id="showTime">: 20:30, 08-03-2021</td>
+                        </tr>
+                        <tr>
+                           <td style="padding:4px;font-weight: 600">PHÒNG CHIẾU</td>
+                           <td style="padding:4px" id="room">: SỐ 01</td>
+                        </tr>
+                        <tr>
+                           <td style="padding:4px;font-weight: 600">RẠP</td>
+                           <td style="padding:4px" class="movieTheaterName" id="movieTheaterName2">: CINESTAR BINH DUONG
+                           </td>
+                        </tr>
+                        <tr>
+                           <td style="padding:4px;font-weight: 600">SỐ GHẾ</td>
+                           <td style="padding:4px" id="seatName">: K09, K08</td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  </td>
+                  <td style="width:200px;text-align:center;vertical-align:top">
+                     <img class="qr-code img-thumbnail img-responsive" />
+                  </td>
+                  </tr>
+                  </tbody>
+                  </table>
+                  <br>
+                  <table style="width:100%;border-collapse:collapse" id="myTable">
+                     <!-- <tbody>
+                        <tr style="padding:8px;background-color:#feae00c4">
+                           <td style="text-align:center;color:#000;padding:8px; font-weight: 600;">STT</td>
+                           <td style="text-align:center;color:#000;padding:8px;font-weight: 600; ">MẶT HÀNG</td>
+                           <td style="text-align:center;color:#000;padding:8px;font-weight: 600;">SỐ LƯỢNG</td>
+                           <td style="text-align:center;color:#000;padding:8px;font-weight: 600;">ĐƠN GIÁ</td>
+                           <td style="text-align:center;color:#000;padding:8px;font-weight: 600;">THÀNH TIỀN (VNĐ)</td>
+                        </tr>
+                        <tr>
+                           <td style="text-align:center;padding:8px;border:1px solid #ccc">1</td>
+                           <td style="text-align:left;padding:8px;border:1px solid #ccc">GHẾ ĐƠN K05, K08</td>
+                           <td style="text-align:right;padding:8px;border:1px solid #ccc">2</td>
+                           <td style="text-align:right;padding:8px;border:1px solid #ccc">45,000</td>
+                           <td style="text-align:right;padding:8px;border:1px solid #ccc">90,000</td>
+                        </tr>
+                        <tr>
+                           <td style="text-align:center;padding:8px;border:1px solid #ccc">2</td>
+                           <td style="text-align:left;padding:8px;border:1px solid #ccc">Combo 1 BD</td>
+                           <td style="text-align:right;padding:8px;border:1px solid #ccc">1</td>
+                           <td style="text-align:right;padding:8px;border:1px solid #ccc">65,000</td>
+                           <td style="text-align:right;padding:8px;border:1px solid #ccc">65,000</td>
+                        </tr>
+                        <tr>
+                           <td colspan="4" style="text-align:left;padding:8px;color:#FEAE00; font-weight: bold;">TỔNG
+                              TIỀN (VNĐ)</td>
+                           <td style="text-align:right;color:#FEAE00;padding:8px;  font-weight: bold;">155,000</td>
+                        </tr>
+                     </tbody> -->
+                  </table>
+                  <p>Cảm ơn Quý khách đã xem phim tại <b class="movieTheater"></b> </p>
+                  <p>Chúc Quý khách một buổi xem phim vui vẻ!</p>
+                  <!-- <div class="yj6qo"></div>
+                  <div class="adL"></div> -->
+</body>
+
+</html>

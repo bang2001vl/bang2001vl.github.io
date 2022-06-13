@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1785032f.css",
+    "main.js": "/static/js/main.6c0743c9.js",
+    "static/media/lanscape.jpg": "/static/media/lanscape.8d284f37e345943ce518.jpg",
+    "static/media/Montserrat-VariableFont_wght.ttf": "/static/media/Montserrat-VariableFont_wght.3068cdb43142f5625baf.ttf",
+    "static/media/Montserrat-Medium.ttf": "/static/media/Montserrat-Medium.3a0917345468c959207a.ttf",
+    "static/media/login.png": "/static/media/login.fa6b468db889ed011fcb.png",
+    "static/media/Oswald-Medium.ttf": "/static/media/Oswald-Medium.8112fe39e69ad86f7bb5.ttf",
+    "static/media/logo.png": "/static/media/logo.07099a1b8bac61bc822c.png",
+    "static/media/defaultImage.jpg": "/static/media/defaultImage.3a9ad9b359376c4cf027.jpg",
+    "static/media/emptyImg.jpg": "/static/media/emptyImg.3a9ad9b359376c4cf027.jpg",
+    "index.html": "/index.html",
+    "main.1785032f.css.map": "/static/css/main.1785032f.css.map",
+    "main.6c0743c9.js.map": "/static/js/main.6c0743c9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1785032f.css",
+    "static/js/main.6c0743c9.js"
+  ]
+}
